@@ -26,6 +26,17 @@ Action with scripted models on two Ubuntu runners (`action-smoke.yml`), and
 the live fixture job when secrets are present (skipped, not passed,
 otherwise).
 
+## Local checks
+
+Run the same Rust checks `ci.yml` runs before you push, so formatting,
+lint and test failures surface locally instead of in CI:
+
+```sh
+cargo fmt --check
+cargo clippy --all-targets -- -D warnings
+cargo test
+```
+
 ## Changes
 
 - Keep the pipeline simple: investigator → fresh validator → deterministic
