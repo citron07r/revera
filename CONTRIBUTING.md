@@ -29,9 +29,12 @@ otherwise).
 ## Local checks
 
 Run the same Rust checks `ci.yml` runs before you push, so formatting,
-lint and test failures surface locally instead of in CI:
+lint and test failures surface locally instead of in CI. CI installs the
+`rustfmt` and `clippy` components explicitly, so add them first if your
+toolchain lacks them:
 
 ```sh
+rustup component add rustfmt clippy
 cargo fmt --check
 cargo clippy --all-targets -- -D warnings
 cargo test
